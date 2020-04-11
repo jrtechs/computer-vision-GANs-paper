@@ -116,7 +116,7 @@ This occurs when the generator has learned the distribution of the data well eno
     \centering
     \includegraphics[width=9cm]{gan-arch.jpg}
     \caption{Architecture of a GAN}
-    \label{fig:jupyter_server}
+    \label{fig:gan}
 \end{figure}
 
 
@@ -191,17 +191,26 @@ We are using the MNIST dataset because it is the de facto standard when it comes
 % go over how each algorithm was implemented,
 % possibly link to github with code
 
+We implemented each GAN variety using PyTorch. PyTorch is an open source machine learning framework. This framework was used due to its popularity in the field and ease of use\cite{pytorch}. 
+
 
 \subsection{\label{sec:impVanilla}Vanilla Generative Adversarial Network}
 % section covering basic GAN implementation
+
+Using boilerplate PyTorch code we implemented a basic GAN that uses a generator and discriminator using simple neural networks. We used a Binary Cross Entropy (BCE) Loss function for the adversarial algorithm \cite{generalDeepLearning}. 
+The arching idea of a basic GAN can be observed in figure \ref{fig:gan}.
 
 
 \subsection{\label{sec:impDCGAN}Deep Generative Adversarial Network}
 % section covering code used to run DCGAN
 
+The code to actually run the DCGAN is identical to the code required to run the regular GAN. The key difference is that we use different types of neural networks in both implementations. In the GAN we just used a normal neural network, but, in the DCGAN we used convolutional neural networks where the generator mirrored the discriminator.
+
 
 \subsection{\label{sec:impWGAN}Wasserstein Generative Adversarial Network}
 % section covering WGAN code
+
+The WGAN implementation was nearly identical to the normal GAN implementation but, the loss function was changed to be the Wasserstein distance. The key benefit of this is that the loss functions that we are trying to optimize now correlatie to image quality. 
 
 
 %---------------------------------------------- end implementation
@@ -220,7 +229,7 @@ The MNIST database of handwritten digits was used to test the GAN algorithms. Th
 
 The MNIST dataset was selected because it is widely used in the field of computer vision and AI. Its popularity makes it an ideal dataset because we can compare our results with the work of other people. Since it is a large set that was used in prior papers, we also know that we could get a really good confidence score if we were solely creating a classifier. However, in this project we will be generating a discriminator and generator on the mnist set. Never-less, the dataset has proven by other researchers to be sufficient for use in neural networks. This  data is ideal to be used because all images are of fixed size of 20x20 and images have already been normalized. 
 
-Our data was downloaded from Yann LeCun's website \footnote{\url{http://yann.lecun.com/exdb/mnist/}}.
+The data we used was downloaded from Yann LeCun's website \footnote{\url{http://yann.lecun.com/exdb/mnist/}}.
 
 
 \subsection{\label{sec:expQuality}Quality}
@@ -232,13 +241,13 @@ In this experiment we aimed to test the quality of the images produced. In this 
 \subsection{\label{sec:expTime}Training}
 % time for each generation? Sorta wishy washy on this one
 
-In this experement we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures at 5, 15 and 30 Epochs.  
+In this experiment we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures at 5, 15 and 30 Epochs.  
 
 
 \subsection{\label{sec:expData}Quantity of Training Data}
 % vary the amount of training data available to the gans
 
-In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, half the training set, and an eighth of the dataset. 
+In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, half the training set, and an eighth of the dataset. Each algorithm was given 25 epochs to run. 
 
 
 %---------------------------------------- end experiment ----------------

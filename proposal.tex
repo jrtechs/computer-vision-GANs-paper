@@ -91,7 +91,7 @@ Computer Vision, Generative Adversarial Networks, Machine Learning, MNIST
 
 %\tableofcontents
 
-\section{\label{sec:level1}Background}
+\section{\label{sec:background}Background}
 
 % discuss the background of Neural networks
 
@@ -124,7 +124,7 @@ Since the advent of GANs in 2014, they have vastly improved and have blown up in
 State of the art research in GANs is currently focusing at applications in video and voice data. 
 
 
-\subsection{\label{sec:level2}Applications}
+\subsection{\label{sec:applications}Applications}
 
 GANs have been applied to many problems \cite{overviewDocument}.\\
 A sampling of some of the problems are listed below. 
@@ -146,7 +146,7 @@ The makeup of each network is a multi-layer, deep convolutional neural network. 
 In doing this, it should stabilize competitive learning between the two agents and result in an smoother learning, avoiding cases of one network dominance.
 
 
-\subsection{\label{sec:level2}Wasserstein Generative Adversarial Networks}
+\subsection{\label{sec:wgan}Wasserstein Generative Adversarial Networks}
 
 Wasserstein Generative Adversarial Networks, or WGANs for short, were an improvement on the vanilla GAN proposed by Martin Arjovsky, et al in 2017 \cite{arjovsky2017wasserstein}.
 The motivation behind this work is modifying the task of the discriminator in order to stabilize the training between the networks. 
@@ -175,13 +175,78 @@ Sixty thousand of those images are partitioned for training and the remaining te
 We are using the MNIST dataset because it is the de facto standard when it comes to machine learning on images. 
 
 
-\subsection{\label{sec:level2}Research Questions}
+\subsection{\label{sec:researchQuestions}Research Questions}
 
 \begin{itemize}
     \item Which GAN architecture performs best on the MNIST dataset?
     \item What are the quantitative differences between these architectures in terms of stability of training, and quality of the results? 
     \item How does required training time and convergence rate differ between GAN architectures?
 \end{itemize}
+
+
+% ------------------------------------------------ Implementation -----
+\section{\label{sec:implementation}Implementation}
+% go over how each algorithm was implemented,
+% possibly link to github with code
+
+
+\subsection{\label{sec:impVanilla}Vanilla Generative Adversarial Network}
+% section covering basic GAN implementation
+
+
+\subsection{\label{sec:impDCGAN}Deep Generative Adversarial Network}
+% section covering code used to run DCGAN
+
+
+\subsection{\label{sec:impWGAN}Wasserstein Generative Adversarial Network}
+% section covering WGAN code
+
+
+%---------------------------------------------- end implementation
+
+%---------------------------------------------- experiment --------------
+\section{\label{sec:exp}Experiments}
+% goes over the tests ran in the experiment
+
+This section goes over in depth the experiments ran in this project and the results produced from them.
+
+
+\subsection{\label{sec:dataSet}Data Set}
+% describe the mnist data set
+
+
+\subsection{\label{sec:expQuality}Quality}
+% simple test where we show our best outputs from each gan
+
+
+\subsection{\label{sec:expTime}Time for Training}
+% time for each generation? Sorta wishy washy on this one
+
+
+
+\subsection{\label{sec:expData}Quantity of Training Data}
+% vary the amount of training data available to the gans
+
+
+
+%---------------------------------------- end experiment ----------------
+
+
+
+\section{\label{sec:exp}Conclusions}
+% high level conclusion of results and future work
+
+This project paves a useful survey and comparison of three popular GAN architectures. Based on the results we can conclude that....
+
+Future work for this project would entail researching more GAN architectures like Conditional GANS (CGANS), Least Square GANs (LSGAN), Auxiliary Classifier GAN (ACGAN), and Info GANS (infoGAN) \cite{cGAN, lsgan, acgan, infogan},. Another avenue of research would be to examine how the results of our experiments on the MNIST dataset hold up against different data-sets. 
+
+Since this is such a new algorithm in the field of Artificial intelligence, people are still actively doing a ton of research in GANs pushing them at the forefront of cutting edge. As GANs become more widely used in the public and private sector, we are sure to see a lot more research into the applications of GANs.
+
+\section{Acknowledgment}
+
+This project was submitted as a RIT CSCI-431 project for professor Sorkunlu's class. 
+
+
 
 % bibliography via bibtex
 \bibliographystyle{ACM-Reference-Format}

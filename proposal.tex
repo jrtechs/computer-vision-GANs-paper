@@ -27,6 +27,8 @@
 %floatfix,
 ]{revtex4-2}
 
+% used for the footnote
+\usepackage{hyperref}
 
 \usepackage{graphicx}% Include figure files
 \usepackage{dcolumn}% Align table columns on decimal point
@@ -214,29 +216,41 @@ This section goes over in depth the experiments ran in this project and the resu
 \subsection{\label{sec:dataSet}Data Set}
 % describe the mnist data set
 
+The MNIST database of handwritten digits was used to test the GAN algorithms. The MNIST dataset comprises of seventy thousand handwritten digits already partitioned into a training and test set. The Training set contains sixty thousand images and ten thousand images are in the test set. This dataset was collected by using approximately 250 writers. Note: the writers in the training and test sets were disjoint from each other.
+
+The MNIST dataset was selected because it is widely used in the field of computer vision and AI. Its popularity makes it an ideal dataset because we can compare our results with the work of other people. Since it is a large set that was used in prior papers, we also know that we could get a really good confidence score if we were solely creating a classifier. However, in this project we will be generating a discriminator and generator on the mnist set. Never-less, the dataset has proven by other researchers to be sufficient for use in neural networks. This  data is ideal to be used because all images are of fixed size of 20x20 and images have already been normalized. 
+
+Our data was downloaded from Yann LeCun's website \footnote{\url{http://yann.lecun.com/exdb/mnist/}}.
+
 
 \subsection{\label{sec:expQuality}Quality}
 % simple test where we show our best outputs from each gan
 
+In this experiment we aimed to test the quality of the images produced. In this test we had the GANS generate hand written digits. After scrambling which GAN produced which image, we asked a test participant to rank each image on a scale of 1-10 on how it looks. Ten would indicate that it looked like a human drew this digit and a one would indicate that the image looks bad. After all the data was collected we compared which GAN architecture had the best perceived quality from the participant. 
 
-\subsection{\label{sec:expTime}Time for Training}
+
+\subsection{\label{sec:expTime}Training}
 % time for each generation? Sorta wishy washy on this one
 
+In this experement we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures at 5, 15 and 30 Epochs.  
 
 
 \subsection{\label{sec:expData}Quantity of Training Data}
 % vary the amount of training data available to the gans
 
+In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, half the training set, and an eighth of the dataset. 
 
 
 %---------------------------------------- end experiment ----------------
 
 
+% TODO we might a dedicated results section
+
 
 \section{\label{sec:exp}Conclusions}
 % high level conclusion of results and future work
 
-This project paves a useful survey and comparison of three popular GAN architectures. Based on the results we can conclude that....
+This project is a useful survey and comparison of three popular GAN architectures. Based on the results we can conclude that....
 
 Future work for this project would entail researching more GAN architectures like Conditional GANS (CGANS), Least Square GANs (LSGAN), Auxiliary Classifier GAN (ACGAN), and Info GANS (infoGAN) \cite{cGAN, lsgan, acgan, infogan},. Another avenue of research would be to examine how the results of our experiments on the MNIST dataset hold up against different data-sets. 
 

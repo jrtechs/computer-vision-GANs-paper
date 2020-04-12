@@ -30,6 +30,10 @@
 % used for the footnote
 \usepackage{hyperref}
 
+%used for side by side graphics
+\usepackage{subfig}
+
+
 \usepackage{graphicx}% Include figure files
 \usepackage{dcolumn}% Align table columns on decimal point
 \usepackage{bm}% bold math
@@ -237,17 +241,61 @@ The data we used was downloaded from Yann LeCun's website \footnote{\url{http://
 
 In this experiment we aimed to test the quality of the images produced. In this test we had the GANS generate hand written digits. After scrambling which GAN produced which image, we asked a test participant to rank each image on a scale of 1-10 on how it looks. Ten would indicate that it looked like a human drew this digit and a one would indicate that the image looks bad. After all the data was collected we compared which GAN architecture had the best perceived quality from the participant. 
 
+TODO: run user experement and insert table of results
+
 
 \subsection{\label{sec:expTime}Training}
 % time for each generation? Sorta wishy washy on this one
 
-In this experiment we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures at 5, 15 and 30 Epochs.  
+In this experiment we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures after different amount of batches. Note: each batch contains 64 images. An epoch is when the algorithm has seen all the data in the set. With the Mnist data set it takes 938 batches to get through all the training data. We sampled after 400 batches, 6000 batches and 
+187200 batches --200 Epochs. We did 200 epochs because we wanted to see what the algorithm would look like at its best and we did 400 and 6000 to capture how fast the algorithm learned.
 
+\begin{figure*}[h!]
+    \centering
+    \subfloat[400 Batches]{{\includegraphics[width=0.3\textwidth]{results/gan/400.png}}}%
+    \qquad
+    \subfloat[6000 Batches]{{\includegraphics[width=0.3\textwidth]{results/gan/6000.png}}}%
+    \qquad
+    \subfloat[187200 Batches]{{\includegraphics[width=0.3\textwidth]{results/gan/187200.png}}}%
+    \caption{GAN Results Sampled at Different Epochs}%
+    \label{fig:ganResults}%
+\end{figure*}
+
+Looking at figure \ref{fig:ganResults} we see that the normal GAN took some time to train and that it looked pretty bad at 400 and 6000 batches but, started to look pretty good at 200 epochs. 
+
+
+\begin{figure*}[h!]
+    \centering
+    \subfloat[400 Batches]{{\includegraphics[width=0.3\textwidth]{results/wgan/400.png}}}%
+    \qquad
+    \subfloat[6000 Batches]{{\includegraphics[width=0.3\textwidth]{results/wgan/6000.png}}}%
+    \qquad
+    \subfloat[187200 Batches]{{\includegraphics[width=0.3\textwidth]{results/wgan/187200.png}}}%
+    \caption{WGAN Results Sampled at Different Epochs}%
+    \label{fig:wganResults}%
+\end{figure*}
+
+Looking at figure \ref{fig:wganResults} we can see that the results from 400 and 6000 batches were pretty bad but, the results after 200 epochs look remarkably good.
+
+\begin{figure*}[h!]
+    \centering
+    \subfloat[400 Batches]{{\includegraphics[width=0.3\textwidth]{results/dcgan/400.png}}}%
+    \qquad
+    \subfloat[6000 Batches]{{\includegraphics[width=0.3\textwidth]{results/dcgan/6000.png}}}%
+    \qquad
+    \subfloat[187200 Batches]{{\includegraphics[width=0.3\textwidth]{results/dcgan/187200.png}}}%
+    \caption{DCGAN Results Sampled at Different Epochs}%
+    \label{fig:dcganResults}%
+\end{figure*}
+
+Looking at figure \ref{fig:dcganResults} we notice that training happened remarkably fast. Compared to figure \ref{fig:wganResults} and figure \ref{fig:ganResults} we can observe that the results after 6000 batches looked better than the other two algorithms did after 200 epochs-- 187200 batches. The results of the DCGAN after 200 epochs look remarkable and would easily be passed as human written hand written digets. 
 
 \subsection{\label{sec:expData}Quantity of Training Data}
 % vary the amount of training data available to the gans
 
 In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, half the training set, and an eighth of the dataset. Each algorithm was given 25 epochs to run. 
+
+TODO: run experement
 
 
 %---------------------------------------- end experiment ----------------
@@ -267,7 +315,7 @@ Since this is such a new algorithm in the field of Artificial intelligence, peop
 
 \section{Acknowledgment}
 
-This project was submitted as a RIT CSCI-431 project for professor Sorkunlu's class. 
+This was submitted as a RIT CSCI-431 project for professor Sorkunlu's class. 
 
 
 

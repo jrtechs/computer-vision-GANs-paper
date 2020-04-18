@@ -241,7 +241,22 @@ The data we used was downloaded from Yann LeCun's website \footnote{\url{http://
 
 In this experiment we aimed to test the quality of the images produced. In this test we had the GANS generate hand written digits. After scrambling which GAN produced which image, we asked a test participant to rank each image on a scale of 1-10 on how it looks. Ten would indicate that it looked like a human drew this digit and a one would indicate that the image looks bad. After all the data was collected we compared which GAN architecture had the best perceived quality from the participant. 
 
+After running all three architectures for 200 epochs, the training metrics indicated that they all were hitting max performance and that more training would be not much more beneficial. We took the last ten sample outputs from each GAN architecture and asked a random participant to rate the hand written digits on a scale of 1-10, the results are shown in table \ref{tab:quality}. As you can see, the DGGAN outperforms the other two architectures by a large margin. 
 
+\begin{table}[]
+\caption{\label{tab:quality}This table represents the quality metrics we measured from a random participant. }
+\begin{tabular}{lll}
+\hline
+\multicolumn{1}{|l|}{GAN} & \multicolumn{1}{l|}{WGAN} & \multicolumn{1}{l|}{DCGAN} \\ \hline
+\multicolumn{1}{|l|}{7}   & \multicolumn{1}{l|}{7}    & \multicolumn{1}{l|}{10}    \\
+\multicolumn{1}{|l|}{6}   & \multicolumn{1}{l|}{8}    & \multicolumn{1}{l|}{10}    \\
+\multicolumn{1}{|l|}{7}   & \multicolumn{1}{l|}{7}    & \multicolumn{1}{l|}{10}    \\
+\multicolumn{1}{|l|}{6}   & \multicolumn{1}{l|}{7}    & \multicolumn{1}{l|}{10}    \\
+\multicolumn{1}{|l|}{5}   & \multicolumn{1}{l|}{7}    & \multicolumn{1}{l|}{10}    \\
+\multicolumn{1}{|l|}{4}   & \multicolumn{1}{l|}{8}    & \multicolumn{1}{l|}{10}    \\ \hline
+                          &                           &                           
+\end{tabular}
+\end{table}
 
 
 \subsection{\label{sec:expTime}Training}

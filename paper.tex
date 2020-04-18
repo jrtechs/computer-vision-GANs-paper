@@ -14,7 +14,7 @@
 %frontmatterverbose, 
 %preprint,
 %preprintnumbers,
-%nofootinbib,
+nofootinbib,
 %nobibnotes,
 %bibnotes,
  amsmath,amssymb,
@@ -24,7 +24,7 @@
 %rmp,
 %prstab,
 %prstper,
-%floatfix,
+floatfix,
 ]{revtex4-2}
 
 % used for the footnote
@@ -195,7 +195,7 @@ We are using the MNIST dataset because it is the de facto standard when it comes
 % go over how each algorithm was implemented,
 % possibly link to github with code
 
-We implemented each GAN variety using PyTorch. PyTorch is an open source machine learning framework. This framework was used due to its popularity in the field and ease of use\cite{pytorch}. 
+We implemented each GAN variety using PyTorch. PyTorch is an open source machine learning framework. This framework was used due to its popularity in the field and ease of use\cite{pytorch}. Our python implementation can be found on Github in a repository created for this class titled "jrtechs/CSCI-431-final-GANS"\footnote{\url{https://github.com/jrtechs/CSCI-431-final-GANs}}.
 
 
 \subsection{\label{sec:impVanilla}Vanilla Generative Adversarial Network}
@@ -241,7 +241,7 @@ The data we used was downloaded from Yann LeCun's website \footnote{\url{http://
 
 In this experiment we aimed to test the quality of the images produced. In this test we had the GANS generate hand written digits. After scrambling which GAN produced which image, we asked a test participant to rank each image on a scale of 1-10 on how it looks. Ten would indicate that it looked like a human drew this digit and a one would indicate that the image looks bad. After all the data was collected we compared which GAN architecture had the best perceived quality from the participant. 
 
-TODO: run user experement and insert table of results
+
 
 
 \subsection{\label{sec:expTime}Training}
@@ -315,7 +315,7 @@ Since this is such a new algorithm in the field of Artificial intelligence, peop
 
 \section{Acknowledgment}
 
-This was submitted as a RIT CSCI-431 project for professor Sorkunlu's class. 
+This was submitted as a RIT CSCI-431 project for professor Sorkunlu's class. Latex files used to generate this report can be found on a Github page created specifically for this project \footnote{\url{https://github.com/jrtechs/computer-vision-GANs-paper}}. 
 
 
 

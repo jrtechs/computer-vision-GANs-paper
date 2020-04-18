@@ -265,6 +265,13 @@ After running all three architectures for 200 epochs, the training metrics indic
 In this experiment we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures after different amount of batches. Note: each batch contains 64 images. An epoch is when the algorithm has seen all the data in the set. With the Mnist data set it takes 938 batches to get through all the training data. We sampled after 400 batches, 6000 batches and 
 187200 batches --200 Epochs. We did 200 epochs because we wanted to see what the algorithm would look like at its best and we did 400 and 6000 to capture how fast the algorithm learned.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{results/0.png}
+    \caption{Output with no training data}%
+    \label{fig:noData}%
+\end{figure}
+
 \begin{figure*}[h!]
     \centering
     \subfloat[400 Batches]{{\includegraphics[width=0.3\textwidth]{results/gan/400.png}}}%
@@ -308,9 +315,22 @@ Looking at figure \ref{fig:dcganResults} we notice that training happened remark
 \subsection{\label{sec:expData}Quantity of Training Data}
 % vary the amount of training data available to the gans
 
-In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, half the training set, and an eighth of the dataset. Each algorithm was given 25 epochs to run. 
+In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, and one sixth of the training data.
 
-TODO: run experement
+The full dataset contained roughly sixty thousand images and took 187200 batches of 64 images to run 200 epochs. The reduced dataset contained ten thousand images and took 31200 batches of 64 images to run 200 epochs.
+
+Figures \ref{fig:ganResults} through \ref{fig:dcganResults} show the results of using all the data in the MNIST dataset on 200 epochs. Figure \ref{fig:reducedData} shows the result of the three algorithms at 200 epochs on the data set reduced to one sixth the original size. Despite reducing the amount of training data, the DCGAN still performed incredibly well, however the two other algorithms took a major performance hit.
+
+\begin{figure*}[h!]
+    \centering
+     \subfloat[GAN]{{\includegraphics[width=0.3\textwidth]{results/reduced/gan.png}}}
+    \qquad
+   \subfloat[WGAN]{{\includegraphics[width=0.3\textwidth]{results/reduced/wgan.png}}}
+    \qquad
+    \subfloat[DCGAN]{{\includegraphics[width=0.3\textwidth]{results/reduced/dcgan.png}}}
+    \caption{Results with one Sixth of Training Set and trained for 200 Epochs}%
+    \label{fig:reducedData}%
+\end{figure*}
 
 
 %---------------------------------------- end experiment ----------------

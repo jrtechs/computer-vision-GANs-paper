@@ -83,9 +83,10 @@ floatfix,
              %  but any date may be explicitly specified
 
 \begin{abstract}
-Generative Adversarial Networks have emerged as a powerful and customizable class of machine learning algorithms within the past half a decade. They learn the distribution of a dataset for the purposes of generating realistic synthetic samples. It is an active field of research with massive improvements yearly, addressing fundamental limitations of the class and improving on the quality of generated figures. GANs have been successfully applied to music synthesis, face generation, and text-to-image translation.
 
-Within this work, we will look at a variety of GAN architectures and how they compare qualitatively on the popular MNIST dataset. We will explore how differing architectures affect time of convergence, quality of the resulting images, and complexity in training. The theoretical justifications and shortcomings of each methodology will be explored in detail, such that an intuition can be formed on choosing the right architecture for a problem.
+Generative Adversarial Networks have emerged as a powerful and customizable class of machine learning algorithms within the past half a decade. They learn the distribution of a dataset to generate realistic synthetic samples. It is an active field of research with massive improvements yearly, addressing fundamental limitations of the class and improving on the quality of generated figures. GANs have been successfully applied to music synthesis, face generation, and text-to-image translation.
+
+Within this work, we will look at a variety of GAN architectures and how they compare qualitatively on the famous MNIST dataset. We will explore how differing architectures affect the time of convergence, quality of the resulting images, and complexity in training. The theoretical justifications and shortcomings of each methodology will be explored in detail, such that intuition can be formed on choosing the right architecture for a problem.
 
 \begin{description}
 \item[Keywords]
@@ -101,20 +102,21 @@ Computer Vision, Generative Adversarial Networks, Machine Learning, MNIST
 
 % discuss the background of Neural networks
 
+
 Neural networks (NN) were first developed by Bernard Widrow and Marcian Hoff of Stanford in 1959 under the name of MADALINE (Multiple Adaptive Linear Element) \cite{widrow1962generalization}. 
 Neural networks were designed with inspiration taken from biological neurons in human brains.
 Artificial neurons aggregate information from other neurons and fire off a signal depending on the strengths of previous inputs, which is analogous with how human neurons operate.
-Neural networks falls into the categorization of supervised learning in artificial intelligence (AI).
-Under supervised learning, the algorithm needs to be fed in labeled data in order to make future classifications/predictions.
-This is opposed to unsupervised learning which needs no training data -- an example of unsupervised learning would be clustering.
+Neural networks fall into the categorization of supervised learning in artificial intelligence (AI).
+Under supervised learning, the algorithm needs to be fed in labeled data to make future classifications/predictions.
+Supervised juxtaposes unsupervised learning, which needs no training data -- an example of unsupervised learning would be clustering.
 
 
 % good fello dissertation on GAN
-GANs were first proposed by Ian J. Goodfellow in his PhD dissertation in 2014 at the Université de Montréal \cite{goodfellow2014generative}.
-The proposed architecture is a dual neural network system, in which a generative model learns to generate realistic samples from a distribution in order to compete against a discriminator that classifies fake images. 
+GANs were first proposed by Ian J. Goodfellow in his Ph.D. dissertation in 2014 at the Université de Montréal \cite{goodfellow2014generative}.
+The proposed architecture is a dual neural network system, in which a generative model learns to generate realistic samples from distribution to compete against a discriminator that classifies fake images. 
 These models are trained in tandem with one another, both learning from random initialization how to best one another.
 A successful result of training is when the Nash Equilibrium between the two models is found.
-This occurs when the generator has learned the distribution of the data well enough to the point that the discriminator is only as good as random chance.
+Nash Equilibrium occurs when the generator has learned the distribution of the data well enough to the point that the discriminator is only as good as a random chance.
 
 \begin{figure}[h!]
     \centering
@@ -126,9 +128,9 @@ This occurs when the generator has learned the distribution of the data well eno
 
 % current state of the art
 
-Since the advent of GANs in 2014, they have vastly improved and have blown up in the AI research field.
-State of the art research in GANs is currently focusing at applications in video and voice data. 
 
+Since the advent of GANs in 2014, they have vastly improved and have blown up in the AI research field.
+State of the art research in GANs is currently focusing on applications in video and voice data. 
 
 \subsection{\label{sec:applications}Applications}
 
@@ -148,17 +150,18 @@ A sampling of some of the problems are listed below.
 \subsection{\label{sec:level2}Deep Convolutional Generative Adversarial Network}
 
 Deep Convolutional Generative Adversarial Networks, DCGAN for short, is an architectural modification on the original GAN, in which the generator and discriminator models are reflections of one another.
-The makeup of each network is a multi-layer, deep convolutional neural network. The idea behind this architecture is that by reflecting the network structure between the two, the computational capacities of each network to learn their respective tasks is equal \cite{radford2015unsupervised}.
-In doing this, it should stabilize competitive learning between the two agents and result in an smoother learning, avoiding cases of one network dominance.
+The makeup of each network is a multi-layer, deep convolutional neural network. The idea behind this architecture is that by reflecting the network structure between the two, the computational capacities of each network to learn their respective tasks are equal \cite{radford2015unsupervised}.
+In doing this, it should stabilize competitive learning between the two agents and result in smoother learning, avoiding cases of one network dominance.
 
 
 \subsection{\label{sec:wgan}Wasserstein Generative Adversarial Networks}
 
-Wasserstein Generative Adversarial Networks, or WGANs for short, were an improvement on the vanilla GAN proposed by Martin Arjovsky, et al in 2017 \cite{arjovsky2017wasserstein}.
+Wasserstein Generative Adversarial Networks, or WGANs for short, was an improvement on the vanilla GAN proposed by Martin Arjovsky, et al in 2017 \cite{arjovsky2017wasserstein}.
 The motivation behind this work is modifying the task of the discriminator in order to stabilize the training between the networks. 
 Instead of having a simple binary classifier that predicts whether an image is real or fake, the discriminator is modified to output the likelihood estimate of the "realness" or "fakeness" of an image.
 The theoretical idea is that this continuous estimation incentivizes the generator to minimize the distance between the distribution of its generated images and the real images more than the standard discriminator design.
-Empirically, this design has shown greater results over the standard GAN architecture in terms of training and architecture stability, as well as being more robust to hyper-parameter configurations.
+Empirically, this design has shown more exceptional results over the standard GAN architecture in terms of training and architecture stability, as well as being more robust to hyper-parameter configurations.
+
 
 \section{\label{sec:goals}Goals}
 
@@ -166,7 +169,7 @@ Empirically, this design has shown greater results over the standard GAN archite
 
 This project applies three different GAN architectures to generating handwritten images from the MNIST dataset. 
 We are going to compare: vanilla GANs, DCGANs, and WGANs.
-Using the results of the three different architectures we wish to judge the performance based on three performance criteria:
+Using the results of the three different architectures, we wish to judge the performance based on three performance criteria:
 
 \begin{itemize}
     \item Perceived Quality of Images
@@ -175,9 +178,8 @@ Using the results of the three different architectures we wish to judge the perf
 \end{itemize}{}
 
 % MNIST data set
-
 The Modified National Institute of Standards and Technology database (MNIST database) is a dataset comprising of seventy thousand handwritten digits.
-Sixty thousand of those images are partitioned for training and the remaining ten thousand are left for testing and validation.
+Sixty thousand of those images are partitioned for training, and the remaining ten thousand are left for testing and validation.
 We are using the MNIST dataset because it is the de facto standard when it comes to machine learning on images. 
 
 
@@ -195,26 +197,29 @@ We are using the MNIST dataset because it is the de facto standard when it comes
 % go over how each algorithm was implemented,
 % possibly link to github with code
 
-We implemented each GAN variety using PyTorch. PyTorch is an open source machine learning framework. This framework was used due to its popularity in the field and ease of use\cite{pytorch}. Our python implementation can be found on Github in a repository created for this class titled "jrtechs/CSCI-431-final-GANS"\footnote{\url{https://github.com/jrtechs/CSCI-431-final-GANs}}.
+
+We implemented each GAN variety using PyTorch. PyTorch is an open-source machine learning framework. This framework was used due to its popularity in the field and ease of use\cite{pytorch}. Our python implementation can be found on Github in a repository created for this class titled "jrtechs/CSCI-431-final-GANS"\footnote{\url{https://github.com/jrtechs/CSCI-431-final-GANs}}.
 
 
 \subsection{\label{sec:impVanilla}Vanilla Generative Adversarial Network}
 % section covering basic GAN implementation
 
-Using boilerplate PyTorch code we implemented a basic GAN that uses a generator and discriminator using simple neural networks. We used a Binary Cross Entropy (BCE) Loss function for the adversarial algorithm \cite{generalDeepLearning}. 
+Using boilerplate PyTorch code, we implemented an underlying GAN that uses a generator and discriminator using simple neural networks. We used a Binary Cross-Entropy (BCE) Loss function for the adversarial algorithm \cite{generalDeepLearning}. 
 The arching idea of a basic GAN can be observed in figure \ref{fig:gan}.
 
 
 \subsection{\label{sec:impDCGAN}Deep Generative Adversarial Network}
 % section covering code used to run DCGAN
 
-The code to actually run the DCGAN is identical to the code required to run the regular GAN. The key difference is that we use different types of neural networks in both implementations. In the GAN we just used a normal neural network, but, in the DCGAN we used convolutional neural networks where the generator mirrored the discriminator.
+
+The code to run the DCGAN is identical to the code required to run the regular GAN. The critical difference is that we use different types of neural networks in both implementations. In the GAN, we just used a standard neural network, but in the DCGAN, we used convolutional neural networks where the generator mirrored the discriminator.
 
 
 \subsection{\label{sec:impWGAN}Wasserstein Generative Adversarial Network}
 % section covering WGAN code
 
-The WGAN implementation was nearly identical to the normal GAN implementation but, the loss function was changed to be the Wasserstein distance. The key benefit of this is that the loss functions that we are trying to optimize now correlatie to image quality. 
+
+The WGAN implementation was nearly identical to the typical GAN implementation, but, the loss function was changed to be the Wasserstein distance. The key benefit of this is that the loss functions that we are trying to optimize now correlate to image quality. 
 
 
 %---------------------------------------------- end implementation
@@ -223,15 +228,16 @@ The WGAN implementation was nearly identical to the normal GAN implementation bu
 \section{\label{sec:exp}Experiments}
 % goes over the tests ran in the experiment
 
-This section goes over in depth the experiments ran in this project and the results produced from them.
+This section goes over in-depth the experiments ran in this project and the results produced from them.
 
 
 \subsection{\label{sec:dataSet}Data Set}
 % describe the mnist data set
 
-The MNIST database of handwritten digits was used to test the GAN algorithms. The MNIST dataset comprises of seventy thousand handwritten digits already partitioned into a training and test set. The Training set contains sixty thousand images and ten thousand images are in the test set. This dataset was collected by using approximately 250 writers. Note: the writers in the training and test sets were disjoint from each other.
 
-The MNIST dataset was selected because it is widely used in the field of computer vision and AI. Its popularity makes it an ideal dataset because we can compare our results with the work of other people. Since it is a large set that was used in prior papers, we also know that we could get a really good confidence score if we were solely creating a classifier. However, in this project we will be generating a discriminator and generator on the mnist set. Never-less, the dataset has proven by other researchers to be sufficient for use in neural networks. This  data is ideal to be used because all images are of fixed size of 20x20 and images have already been normalized. 
+The MNIST database of handwritten digits was used to test the GAN algorithms. The MNIST dataset comprises of seventy thousand handwritten digits already partitioned into a training and test set. The Training set contains sixty thousand images, and ten thousand images are in the test set. This dataset was collected by using approximately 250 writers. Note: the writers in the training and test sets were disjoint from each other.
+
+The MNIST dataset was selected because it is widely used in the field of computer vision and AI. Its popularity makes it an ideal dataset because we can compare our results with the work of other people. Since it is a large set that was used in previous papers, we also know that we could get a really good confidence score if we were solely creating a classifier. However, in this project, we will be generating a discriminator and generator on the most set. Never-less, the dataset has proven by other researchers to be sufficient for use in neural networks. MNIST is ideal to use because images are of a fixed size of 20x20, and images have already been normalized. 
 
 The data we used was downloaded from Yann LeCun's website \footnote{\url{http://yann.lecun.com/exdb/mnist/}}.
 
@@ -239,9 +245,9 @@ The data we used was downloaded from Yann LeCun's website \footnote{\url{http://
 \subsection{\label{sec:expQuality}Quality}
 % simple test where we show our best outputs from each gan
 
-In this experiment we aimed to test the quality of the images produced. In this test we had the GANS generate hand written digits. After scrambling which GAN produced which image, we asked a test participant to rank each image on a scale of 1-10 on how it looks. Ten would indicate that it looked like a human drew this digit and a one would indicate that the image looks bad. After all the data was collected we compared which GAN architecture had the best perceived quality from the participant. 
+In this experiment, we aimed to test the quality of the images produced. In this test, we had the GANS generate handwritten digits. After scrambling which GAN produced, which image, we asked a test participant to rank each image on a scale of 1-10 on how it looks. Ten would indicate that it looked like a human drew this digit, and a one would indicate that the image looks terrible. After all the data was collected, we compared which GAN architecture had the best-perceived quality from the participant. 
 
-After running all three architectures for 200 epochs, the training metrics indicated that they all were hitting max performance and that more training would be not much more beneficial. We took the last ten sample outputs from each GAN architecture and asked a random participant to rate the hand written digits on a scale of 1-10, the results are shown in table \ref{tab:quality}. As you can see, the DGGAN outperforms the other two architectures by a large margin. 
+After running all three architectures for 200 epochs, the training metrics indicated that they all were hitting max performance and that more training would be not much more beneficial. We took the last ten sample outputs from each GAN architecture and asked a random participant to rate the handwritten digits on a scale of 1-10; the results are shown in table \ref{tab:quality}. As you can see, the DGGAN outperforms the other two architectures by a large margin. 
 
 \begin{table}[]
 \caption{\label{tab:quality}This table represents the quality metrics we measured from a random participant. }
@@ -262,8 +268,8 @@ After running all three architectures for 200 epochs, the training metrics indic
 \subsection{\label{sec:expTime}Training}
 % time for each generation? Sorta wishy washy on this one
 
-In this experiment we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures after different amount of batches. Note: each batch contains 64 images. An epoch is when the algorithm has seen all the data in the set. With the Mnist data set it takes 938 batches to get through all the training data. We sampled after 400 batches, 6000 batches and 
-187200 batches --200 Epochs. We did 200 epochs because we wanted to see what the algorithm would look like at its best and we did 400 and 6000 to capture how fast the algorithm learned.
+In this experiment, we cut off each GAN after a specif amount of Epochs. We compared the results of the three GAN architectures after a different amount of batches. Note: Each batch contains 64 images. An epoch is when the algorithm has seen all the data in the set. With the MNIST data set, it takes 938 batches to get through all the training data. We sampled after 400 batches, 6000 batches and 
+187200 batches --200 Epochs. We did 200 epochs because we wanted to see what the algorithm would look like at its best, and we did 400 and 6000 to capture how fast the algorithm learned.
 
 \begin{figure}[h!]
     \centering
@@ -283,7 +289,7 @@ In this experiment we cut off each GAN after a specif amount of Epochs. We compa
     \label{fig:ganResults}%
 \end{figure*}
 
-Looking at figure \ref{fig:ganResults} we see that the normal GAN took some time to train and that it looked pretty bad at 400 and 6000 batches but, started to look pretty good at 200 epochs. 
+Looking at figure \ref{fig:ganResults}, we see that the normal GAN took some time to train and that it looked pretty bad at 400 and 6000 batches but started to look pretty good at 200 epochs. 
 
 
 \begin{figure*}[h!]
@@ -297,7 +303,7 @@ Looking at figure \ref{fig:ganResults} we see that the normal GAN took some time
     \label{fig:wganResults}%
 \end{figure*}
 
-Looking at figure \ref{fig:wganResults} we can see that the results from 400 and 6000 batches were pretty bad but, the results after 200 epochs look remarkably good.
+Looking at figure \ref{fig:wganResults}, we can see that the results from 400 and 6000 batches were pretty bad but, the results after 200 epochs look remarkably good.
 
 \begin{figure*}[h!]
     \centering
@@ -310,16 +316,18 @@ Looking at figure \ref{fig:wganResults} we can see that the results from 400 and
     \label{fig:dcganResults}%
 \end{figure*}
 
-Looking at figure \ref{fig:dcganResults} we notice that training happened remarkably fast. Compared to figure \ref{fig:wganResults} and figure \ref{fig:ganResults} we can observe that the results after 6000 batches looked better than the other two algorithms did after 200 epochs-- 187200 batches. The results of the DCGAN after 200 epochs look remarkable and would easily be passed as human written hand written digets. 
+
+Looking at figure \ref{fig:dcganResults}, we notice that training happened remarkably fast. Compared to figure \ref{fig:wganResults} and figure \ref{fig:ganResults}, we can observe that the results after 6000 batches looked better than the other two algorithms did after 200 epochs-- 187200 batches. The results of the DCGAN after 200 epochs look remarkable and would quickly be passed as human written handwritten digits. 
+
 
 \subsection{\label{sec:expData}Quantity of Training Data}
 % vary the amount of training data available to the gans
 
-In this experiment we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, and one sixth of the training data.
+In this experiment, we compare how the GAN algorithms run at different levels of training data from the MNIST set. We compare the GANS using the full training set, and one-sixth of the training data.
 
 The full dataset contained roughly sixty thousand images and took 187200 batches of 64 images to run 200 epochs. The reduced dataset contained ten thousand images and took 31200 batches of 64 images to run 200 epochs.
 
-Figures \ref{fig:ganResults} through \ref{fig:dcganResults} show the results of using all the data in the MNIST dataset on 200 epochs. Figure \ref{fig:reducedData} shows the result of the three algorithms at 200 epochs on the data set reduced to one sixth the original size. Despite reducing the amount of training data, the DCGAN still performed incredibly well, however the two other algorithms took a major performance hit.
+Figures \ref{fig:ganResults} through \ref{fig:dcganResults} show the results of using all the data in the MNIST dataset on 200 epochs. Figure \ref{fig:reducedData} shows the result of the three algorithms at 200 epochs on the data set reduced to one-sixth of the original size. Despite reducing the amount of training data, the DCGAN still performed incredibly well; however, the two other algorithms took a major performance hit.
 
 \begin{figure*}[h!]
     \centering
@@ -342,11 +350,12 @@ Figures \ref{fig:ganResults} through \ref{fig:dcganResults} show the results of 
 \section{\label{sec:exp}Conclusions}
 % high level conclusion of results and future work
 
-This project is a useful survey and comparison of three popular GAN architectures. Based on the results we can conclude that....
 
-Future work for this project would entail researching more GAN architectures like Conditional GANS (CGANS), Least Square GANs (LSGAN), Auxiliary Classifier GAN (ACGAN), and Info GANS (infoGAN) \cite{cGAN, lsgan, acgan, infogan},. Another avenue of research would be to examine how the results of our experiments on the MNIST dataset hold up against different data-sets. 
+This project is a useful survey and comparison of three popular GAN architectures. Based on the results, we can conclude that DCGANs make great improvements in terms of what it can do with limited training data and the number of iterations required. DCGANs were also proven to give really crip results.
 
-Since this is such a new algorithm in the field of Artificial intelligence, people are still actively doing a ton of research in GANs pushing them at the forefront of cutting edge. As GANs become more widely used in the public and private sector, we are sure to see a lot more research into the applications of GANs.
+Future work for this project would entail researching more GAN architectures like Conditional GANS (CGANS), Least Square GANs (LSGAN), Auxiliary Classifier GAN (ACGAN), and Info GANS (infoGAN) \cite{cGAN, lsgan, acgan, infogan},. Another avenue of research would be to examine how the results of our experiments on the MNIST dataset hold up against different datasets. 
+
+Since this is such a new algorithm in the field of Artificial intelligence, people are still actively doing a ton of research in GANs, pushing them at the forefront of cutting edge. As GANs become more widely used in the public and private sectors, we are sure to see a lot more research into the applications of GANs.
 
 \section{Acknowledgment}
 
